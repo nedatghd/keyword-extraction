@@ -27,10 +27,11 @@ kw_model = KeyBERT()
 To output the results, we simply need to call the extract_keywords() method of our KeyBERT object. To the first positional parameter, we will pass the document, and to the "top n" parameter, the number of keys we want to receive.
 The result is a list of tuples, where the first index in each tuple is the string value for the key and the second value is the distance of the key, which can be thought of as a score to indicate the model's confidence, which ranges from 0 to 1, with higher values denoting greater confidence.
 
-Simple_keywords = kw_model.extract_keywords(texts_clean, keyphrase_ngram_range=(1, 1), stop_words=None, top_n=10)
+- Simple_keywords = kw_model.extract_keywords(texts_clean, keyphrase_ngram_range=(1, 1), stop_words=None, top_n=10)
 
 # 2.2.3. phrase extraxtion and Diversification
 We only investigated single words as potential keys in the preceding section. This can be changed to take a variety of tokens into account. By giving a tuple to the keyphrase_ngram_range  option, this is achieved. Additionally, we could want the model to generate a wider variety of keys. In order to diversity the output, we apply an approach called max sum similarity by setting the use use_maxsum parameter to true and giving an integer to nr_candidates.
-keywords_with_diversity =  kw_model.extract_keywords(texts_clean, keyphrase_ngram_range=(3, 3), stop_words='english', use_maxsum=True,  nr_candidates=20, top_n=10)
+
+- keywords_with_diversity =  kw_model.extract_keywords(texts_clean, keyphrase_ngram_range=(3, 3), stop_words='english', use_maxsum=True,  nr_candidates=20, top_n=10)
 
 the function Simple_diverse_keywords_generation is defined to generate the single and diverse keyword extraction for each document and save them in extracted_file.csv file. And that's it!
